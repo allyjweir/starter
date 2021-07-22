@@ -21,7 +21,7 @@ run:
 		--volume $${PWD}:/starter \
 		--publish 8000:8000 \
 		starter:local_dev \
-		poetry run uvicorn app:starter --host 0.0.0.0  --reload
+		poetry run uvicorn app:starter --host 0.0.0.0 --app-dir starter/ --reload
 
 format:
 	docker run \
