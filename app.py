@@ -5,6 +5,13 @@ from starlette.routing import Route
 from starlette_prometheus import metrics, PrometheusMiddleware
 from prometheus_client import Counter
 
+from maths.endpoints import (
+    Addition,
+    Subtraction,
+    Division,
+)
+
+
 greetings_counter = Counter(
     "greetings_given", "the number of times we have said hello on the homepage"
 )
@@ -23,5 +30,8 @@ starter = Starlette(
     routes=[
         Route("/", homepage),
         Route("/metrics/", metrics),
+        Route("/addition/", Addition),
+        Route("/subtraction/", Subtraction),
+        Route("/division/", Division),
     ],
 )
