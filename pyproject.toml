@@ -9,6 +9,7 @@ python = "^3.9"
 starlette = "^0.16.0"
 starlette-prometheus = "^0.7.0"
 uvicorn = "^0.14.0"
+prometheus-client = "0.7.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.7b0"
