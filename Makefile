@@ -40,3 +40,6 @@ test:
 		--volume $${PWD}:/starter \
 		starter:local_dev \
 		poetry run python -m unittest -v
+
+publish_image:
+	/bin/bash scripts/publish_to_dockerhub.sh
