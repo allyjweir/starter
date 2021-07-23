@@ -5,7 +5,7 @@ from starlette.routing import Route
 from starlette_prometheus import metrics, PrometheusMiddleware
 from prometheus_client import Counter
 
-from .maths.endpoints import (
+from maths.endpoints import (
     Addition,
     Subtraction,
     Division,
