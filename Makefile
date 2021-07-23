@@ -43,3 +43,6 @@ test:
 
 publish_image:
 	/bin/bash scripts/publish_to_dockerhub.sh
+
+deploy_to_minikube:
+	/bin/bash scripts/deploy_to_minikube.sh
