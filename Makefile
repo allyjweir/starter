@@ -9,7 +9,7 @@ console:
 		--interactive \
 		--tty \
 		--volume $${PWD}:/starter \
-		--publish 8000:8000 \
+		--publish 8080:8080 \
 		starter:local_dev \
 		/bin/bash
 
@@ -19,9 +19,9 @@ run:
 		--interactive \
 		--tty \
 		--volume $${PWD}:/starter \
-		--publish 8000:8000 \
+		--publish 8080:8080 \
 		starter:local_dev \
-		poetry run uvicorn app:starter --host 0.0.0.0 --app-dir starter/ --reload
+		poetry run uvicorn app:starter --host 0.0.0.0 --port 8080 --app-dir starter/ --reload
 
 format:
 	docker run \
