@@ -12,4 +12,4 @@ RUN poetry install --no-interaction --no-ansi --no-root
 
 COPY --chown=nonroot:nonroot . .
 
-ENTRYPOINT ["/bin/bash", "/starter/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/home/nonroot/starter/entrypoint.sh"]
