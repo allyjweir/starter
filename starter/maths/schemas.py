@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, ValidationError
+from marshmallow import Schema, fields, validates, ValidationError
 
 
 def parse_and_validate_request_data(schema_class, request_data):
@@ -35,7 +35,12 @@ class SubtractionSchema(Schema):
 
 
 class RandomSchema(Schema):
-    count = fields.Number(required=False)
+    count = fields.Integer(required=False, strict=True, load_default=10)
+
+    @validates("count")
+    def validate_count(self, value):
+        if value < 0:
+            raise ValidationError("count must be a positive integer")
 
 
 class ErrorResponseSchema(Schema):

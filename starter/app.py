@@ -9,6 +9,7 @@ from maths.endpoints import (
     Addition,
     Subtraction,
     Division,
+    Random,
 )
 
 
@@ -33,5 +34,6 @@ starter = Starlette(
         Route("/addition/", Addition),
         Route("/subtraction/", Subtraction),
         Route("/division/", Division),
+        Route("/random/", Random),
     ],
 )
