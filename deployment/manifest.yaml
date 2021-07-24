@@ -52,7 +52,7 @@ spec:
       serviceAccountName: starter-app-sa
       containers:
         - name: webserver
-          image: allyjweir/starter:e5e5729
+          image: allyjweir/starter:ed8a847
           args: ["poetry", "run", "uvicorn", "app:starter", "--host 0.0.0.0", "--port 8080", "--app-dir starter/"]
           ports:
             - name: http
