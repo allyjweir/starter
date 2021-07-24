@@ -20,7 +20,7 @@ greetings_counter = Counter(
 
 async def homepage(request):
     greetings_counter.inc()
-    return JSONResponse({"hello": "dan"})
+    return JSONResponse({"hello": "world"})
 
 
 starter = Starlette(
