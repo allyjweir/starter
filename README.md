@@ -83,3 +83,13 @@ When it comes to the task of templating itself, an alternative I have been
 exploring recently would be to use [`ytt`](<https://carvel.dev/ytt/>) to
 template and patch the manifest as required before then using `kapp` or ArgoCD
 to deploy.
+
+## Monitoring
+
+As far as monitoring, Prometheus has been integrated to provide a standard set of
+generic HTTP server-relevant and Python-specific metrics. This along with a log
+collection solution integrated at cluster level would be sufficient for managing
+the service in production.
+
+If I were to take this further, I would also integrate [Honeycomb](honeycomb.io)
+to introduce an event-based observability tool with distributed tracing too.
