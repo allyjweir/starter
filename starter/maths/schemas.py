@@ -19,21 +19,6 @@ class TwoNumberSchema(Schema):
     y = fields.Number(required=True)
 
 
-class SubtractionSchema(Schema):
-    """
-    The spec specified that the values in this needed to be 'real' numbers as
-    opposed to just 'numbers' when specified in the other endpoints. Hence, this
-    schema is unique to allow for the definition of a 'real number'.
-
-    Examples of real numbers:
-    - Rational numbers (examples are 5, -5, 0.42)
-    - Irrational numbers (examples are π, √2)
-    """
-
-    # TODO: Write the schema
-    pass
-
-
 class RandomSchema(Schema):
     count = fields.Integer(required=False, strict=True, load_default=10)
 
