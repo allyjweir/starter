@@ -91,5 +91,5 @@ generic HTTP server-relevant and Python-specific metrics. This along with a log
 collection solution integrated at cluster level would be sufficient for managing
 the service in production.
 
-If I were to take this further, I would also integrate [Honeycomb](honeycomb.io)
+If I were to take this further, I would also integrate [Honeycomb](https://honeycomb.io)
 to introduce an event-based observability tool with distributed tracing too.
