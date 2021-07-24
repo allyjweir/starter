@@ -1,6 +1,6 @@
 import pytest
 from starlette.testclient import TestClient
-from starter.app import starter
+from app import starter
 
 client = TestClient(starter)
 
@@ -100,3 +100,31 @@ def test_division_returns_error_on_invalid_input(
     response = client.post("/division/", json=test_input)
     assert response.status_code == 400
     assert response.json()["validation_errors"][invalid_key] == [expected_error]
+
+
+def test_can_request_random_without_count_field():
+    response = client.post("/random/", json={})
+    assert response.status_code == 200
+
+
+def test_default_random_request_returns_10_values():
+    response = client.post("/random/", json={})
+    assert response.status_code == 200
+    assert len(response.json()["result"]) == 10
+
+
+@pytest.mark.parametrize(
+    "test_input,expected_status_code",
+    [
+        (1, 200),
+        (999, 200),
+        (-1, 400),
+        (1.5, 400),
+    ],
+)
+def test_can_request_arbitrary_count_of_random_values(test_input, expected_status_code):
+    response = client.post("/random/", json={"count": test_input})
+    assert response.status_code == expected_status_code
+
+    if expected_status_code == 200:
+        assert len(response.json()["result"]) == test_input
