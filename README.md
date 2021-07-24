@@ -1,6 +1,6 @@
 # starter
 
-An example Flask-based web application, deployable to Kubernetes with all the
+An example Python/starlette-based web application, deployable to Kubernetes with all the
 essentials.
 
 ## Problem Definition
