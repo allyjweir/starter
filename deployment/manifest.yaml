@@ -60,12 +60,12 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /healthz/liveness
               port: http
             timeoutSeconds: 3
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz/readiness
               port: http
             timeoutSeconds: 3
           resources:
