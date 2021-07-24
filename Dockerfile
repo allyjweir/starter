@@ -1,13 +1,15 @@
 FROM python:3.9.6-slim
 
-WORKDIR /starter
-
 RUN pip install poetry==1.1.7
 
-COPY poetry.lock pyproject.toml .
+RUN adduser --disabled-password nonroot
+USER nonroot
+WORKDIR /home/nonroot/starter
+
+COPY --chown=nonroot:nonroot poetry.lock pyproject.toml .
 
 RUN poetry install --no-interaction --no-ansi --no-root
 
-COPY . .
+COPY --chown=nonroot:nonroot . .
 
 ENTRYPOINT ["/bin/bash", "/starter/entrypoint.sh"]
