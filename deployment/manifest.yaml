@@ -1,3 +1,8 @@
+#@ def labels():
+  app.kubernetes.io/name: starter-app
+  app.kubernetes.io/component: webserver
+#@ end
+
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -10,10 +15,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: starter-app
-  labels:
-    app.kubernetes.io/name: starter-app
-    app.kubernetes.io/component: webserver
+  name: #@ data.values.app_name
+  labels: #@ labels()
 spec:
   # Usually would avoid this but since I'm running it in minikube, NodePort type
   # is recommended.
@@ -24,30 +27,22 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  selector:
-    app.kubernetes.io/name: starter-app
-    app.kubernetes.io/component: webserver
+  selector: #@ labels()
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: starter-app
-  labels:
-    app.kubernetes.io/name: starter-app
-    app.kubernetes.io/component: webserver
+  labels: #@ labels()
 spec:
   replicas: 1  # Ideally three spread across distinct nodes via anti-affinity configuration.
   revisionHistoryLimit: 3
   selector:
-    matchLabels:
-      app.kubernetes.io/name: starter-app
-      app.kubernetes.io/component: webserver
+    matchLabels: #@ labels()
   template:
     metadata:
-      labels:
-        app.kubernetes.io/name: starter-app
-        app.kubernetes.io/component: webserver
+      labels: #@ labels()
     spec:
       serviceAccountName: starter-app-sa
       containers:
